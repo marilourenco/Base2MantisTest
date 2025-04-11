@@ -10,7 +10,6 @@ public class CriarTarefaPage {
     private WebDriver driver;
 
     private By botaoNovaTarefa = By.xpath("//*[@id=\"sidebar\"]/ul/li[3]/a/span");
-    private By abaNovaTarefa = By.className("menu-text");
     private By campoCategoria = By.id("category_id");
     private By selecionarOpcao2 = By.xpath("//*[@id=\"category_id\"]/option[2]");
     private By campoFrequencia = By.id("reproducibility");
@@ -33,8 +32,8 @@ public class CriarTarefaPage {
     private By arquivoUpload = By.xpath("//*[@id=\"report_bug_form\"]/div/div[2]/div[1]/div/table/tbody/tr[11]/td/div[2]");
     private By checkboxPrivado = By.xpath("//*[@id=\"report_bug_form\"]/div/div[2]/div[1]/div/table/tbody/tr[12]/td/label[2]/span");
 
-    private String resumoTarefa = "Criando uma nova tarefa preenchendo todos os campos obrigatórios";
-    private String descricaoTarefa = "Esta é uma tarefa criada através de um teste automatizado";
+    private String resumoTarefa = "resumoTarefa";
+    private String descricaoTarefa = "descricaoTarefa";
     private String passosTarefa = "Passo 1: Digitar alguma coisa";
     private String informacoesTarefa = "Esta tarefa é relacionada a testes automatizados";
 
@@ -49,11 +48,17 @@ public class CriarTarefaPage {
     }
 
     @Step("Preencher campos obrigatórios")
-    public void preencherCamposObrigatorios() {
+    public void preencherCamposObrigatorios(String resumoTarefa, String descricaoTarefa) {
         driver.findElement(campoCategoria).click();
         driver.findElement(selecionarOpcao2).click();
-        driver.findElement(resumo).sendKeys(resumoTarefa);
-        driver.findElement(descricao).sendKeys(descricaoTarefa);
+
+        WebElement campoResumo = driver.findElement(resumo);
+        campoResumo.clear();
+        campoResumo.sendKeys(resumoTarefa);
+
+        WebElement campoDescricao = driver.findElement(descricao);
+        campoDescricao.clear();
+        campoDescricao.sendKeys(descricaoTarefa);
     }
 
     @Step("Preencher todos os campos")
