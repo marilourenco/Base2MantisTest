@@ -11,7 +11,7 @@ Projeto de automação para o site [Mantis Base2](https://mantis-prova.base2.com
 - **TestNG** — Organização e execução de testes (anotações, assertions, paralelismo)
 - **Allure Reports** — Geração de relatórios de execução
 - **Page Object Model (POM)** — Separação de camadas (páginas, ações, testes)
-- **ChromeDriver** e **GeckoDriver** — Suporte a Chrome e Firefox
+- **ChromeDriver** — Suporte a Chrome e Firefox
 - **GitHub Actions** — Integração contínua (CI)
 
 ## :bookmark_tabs: Estrutura do Projeto
