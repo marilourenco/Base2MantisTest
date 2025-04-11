@@ -91,14 +91,6 @@ O projeto conta com automação de execução dos testes via GitHub Actions:
 | Build e Testes | Executa `mvn clean test` para compilar e rodar os testes |
 
 ---
-### :information_source: Após a execução do Workflow:
-
-- Acesse a aba **Actions** no GitHub.
-- Você verá um botão chamado **Artifacts**.
-- Faça o download do `.zip` do relatório (`allure-report`).
-- Extraia o conteúdo e abra o arquivo `index.html` no navegador para visualizar o relatório completo.
-
----
 
 ## :warning: Problemas Conhecidos
 
