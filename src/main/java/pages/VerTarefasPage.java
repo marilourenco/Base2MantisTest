@@ -19,7 +19,7 @@ public class VerTarefasPage {
     private By dropEstado = By.xpath("//*[@id=\"show_status_filter_target\"]/select");
     private By selecionarOpcaoEstado = By.xpath("//*[@id=\"show_status_filter_target\"]/select/option[6]");
     private By botaoAplicarFiltro = By.xpath("//*[@id=\"filters_form_open\"]/div[2]/div/div/input[2]");
-    private By botaoRedefinir = By.xpath("//*[@id=\"filter\"]/div[2]/div/div/div/div/a");
+    private By botaoRedefinirFiltro = By.xpath("//*[@id=\"filter\"]/div[2]/div/div/div/div/a");
 
     public VerTarefasPage(WebDriver driver) {
         this.driver = driver;
@@ -57,6 +57,6 @@ public class VerTarefasPage {
 
     @Step("Redefinir Filtros")
     public void redefinirFiltros() {
-        driver.findElement(botaoRedefinir).click();
+        driver.findElement(botaoRedefinirFiltro).click();
     }
 }
