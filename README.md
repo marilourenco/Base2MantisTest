@@ -75,6 +75,10 @@ Este projeto utiliza o recurso **DataProvider** do TestNG na classe **CriarTaref
 - Criar tarefa apenas com campos obrigatórios
 ---
 
+Claro! Já reescrevi pra refletir que agora **só rodamos os testes**, sem relatórios Allure:  
+
+---
+
 ## :construction_worker: GitHub Actions - CI Pipeline
 
 O projeto conta com automação de execução dos testes via GitHub Actions:
@@ -82,12 +86,11 @@ O projeto conta com automação de execução dos testes via GitHub Actions:
 | Etapa | O que faz |
 |:---|:---|
 | Checkout | Baixa o código da branch (PR ou push) |
-| Setup Java 11 | Instala Java 11 Temurin |
-| Permissão ao Maven Wrapper | Dá permissão para executar o `mvnw` em Linux |
-| Build e Testes | Executa `./mvnw clean test` |
-| Gerar Allure Report | Gera o relatório Allure com Maven |
-| Upload do Allure | Faz upload da pasta do relatório como artefato |
+| Setup Java 11 | Instala o Java 11 (Temurin) |
+| Cache Maven | Usa cache para as dependências do Maven |
+| Build e Testes | Executa `mvn clean test` para compilar e rodar os testes |
 
+---
 ### :information_source: Após a execução do Workflow:
 
 - Acesse a aba **Actions** no GitHub.
