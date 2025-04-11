@@ -73,8 +73,6 @@ Este projeto utiliza o recurso **DataProvider** do TestNG na classe **CriarTaref
 
 - Criar tarefa com todos os campos preenchidos
 - Criar tarefa apenas com campos obrigatórios
-- Criar tarefa sem campos obrigatórios (cenário de exceção)
-
 ---
 
 ## :construction_worker: GitHub Actions - CI Pipeline
@@ -114,6 +112,7 @@ O projeto conta com automação de execução dos testes via GitHub Actions:
 
 - Projeto focado em qualidade de código, reuso e boas práticas.
 - Como trata-se de um desafio individual, o projeto não contém fluxo completo de branches, code review e pull requests.
+- Cenário de exceção não foram priorizados :(
 
 ---
 
