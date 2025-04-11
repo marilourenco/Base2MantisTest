@@ -32,6 +32,7 @@ public class CriarTarefaPage {
     private By selecionarOpcaoMarcador56 = By.xpath("//*[@id=\"tag_select\"]/option[56]");
     private By arquivoUpload = By.xpath("//*[@id=\"report_bug_form\"]/div/div[2]/div[1]/div/table/tbody/tr[11]/td/div[2]");
     private By checkboxPrivado = By.xpath("//*[@id=\"report_bug_form\"]/div/div[2]/div[1]/div/table/tbody/tr[12]/td/label[2]/span");
+
     private String resumoTarefa = "Criando uma nova tarefa preenchendo todos os campos obrigatórios";
     private String descricaoTarefa = "Esta é uma tarefa criada através de um teste automatizado";
     private String passosTarefa = "Passo 1: Digitar alguma coisa";

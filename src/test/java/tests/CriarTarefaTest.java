@@ -16,6 +16,7 @@ public class CriarTarefaTest extends BaseTest {
         Assert.assertTrue(criarTarefaPage.validarCriacaoTarefa(), "Ver Detalhes da Tarefa");
 
     }
+
     @Test(description = "Deve criar uma tarefa com todos os campos preenchidos sucesso")
     public void deveCriarTarefaComTodosOsCamposPreenchidosComSucesso() {
         criarTarefaPage.abrirTelaCriarTarefa();

@@ -18,6 +18,7 @@ public class BaseTest {
     protected CriarTarefaPage criarTarefaPage;
     protected MinhaVisaoPage minhaVisaoPage;
 
+
     @BeforeMethod
     public void setUp() {
         WebDriverManager.chromedriver().setup();
