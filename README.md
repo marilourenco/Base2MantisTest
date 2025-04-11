@@ -1,6 +1,6 @@
 # Base2 Mantis Test Automation
 
-Projeto de automação para o site [Mantis Base2](https://mantis-prova.base2.com.br/), utilizando **Java**, **Selenium WebDriver**, **TestNG** e **Allure** para geração de relatórios de testes.
+Projeto de automação para o site [Mantis Base2](https://mantis-prova.base2.com.br/), utilizando **Java**, **Selenium WebDriver**, **TestNG** **Github Actions** e **Allure** para geração de relatórios de testes.
 
 ## :rocket: Tech Stack
 
@@ -111,12 +111,18 @@ O projeto conta com automação de execução dos testes via GitHub Actions:
 
 ---
 
-## :memo: Observações Finais
+## :bulb: Possíveis Melhorias
 
-- Projeto focado em qualidade de código, reuso e boas práticas.
-- Como trata-se de um desafio individual, o projeto não contém fluxo completo de branches, code review e pull requests.
-- Cenário de exceção não foram priorizados :(
-
+- **Melhorar os localizadores**: Refatorar o uso de **XPath** para **CSS Selectors** onde for possível, aumentando a performance e estabilidade dos testes.
+- **Implementar testes de exceções**: Adicionar cenários negativos e de validação de erros (ex.: campos obrigatórios não preenchidos, permissões inválidas).
+- **Suporte a múltiplos browsers**: Ampliar a execução para browsers como **Firefox** e **Edge**, garantindo maior cobertura cross-browser.
+- **Parallel Testing**: Configurar o **TestNG** para executar os testes em paralelo e reduzir o tempo de execução.
+- **Ambientes Dinâmicos**: Permitir rodar testes apontando para diferentes ambientes (desenvolvimento, homologação, produção) usando parâmetros no Maven ou arquivos de configuração.
+- **Pipeline de CI aprimorado**: Incluir etapas de:
+  - Geração automática do relatório Allure após execução.
+  - Upload automático dos relatórios para repositórios de artefatos ou integração com ferramentas como Slack/Teams.
+- **Inclusão de testes visuais**: Integrar alguma ferramenta de comparação visual para validar layout e aparência (ex.: **Applitools**, **Percy**).
+- **Gerenciamento de dados de teste**: Centralizar e versionar os dados de entrada dos testes de forma mais estruturada (ex.: arquivos `.csv`, `.json` ou banco de dados de teste).
 ---
 
 **Feito com :heart: por Marilene Lourenço**
