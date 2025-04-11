@@ -1,39 +1,32 @@
-name: CI Pipeline
+name: CI Tests
 
 on:
   push:
-    branches: [ master ]
+    branches: [ "main" ]
   pull_request:
-    branches: [ master ]
+    branches: [ "main" ]
 
 jobs:
-  build:
+  tests:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout código
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Configurar Java 11
+      - name: Set up JDK 11
         uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
           java-version: '11'
 
-      - name: Dar permissão ao Maven Wrapper
-        run: chmod +x mvnw
-
-      - name: Build e executar testes
-        run: ./mvnw clean test
-
-      - name: Gerar relatório Allure
-        run: ./mvnw allure:report
-
-      - name: Listar arquivos dentro de target
-        run: ls -R target
-
-      - name: Publicar relatório como artefato
-        uses: actions/upload-artifact@v4
+      - name: Cache Maven dependencies
+        uses: actions/cache@v4
         with:
-          name: allure-report
-          path: target/site/allure-maven-plugin
+          path: ~/.m2
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-maven-
+
+      - name: Run tests with Maven
+        run: mvn clean test
