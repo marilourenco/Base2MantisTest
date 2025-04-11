@@ -18,7 +18,6 @@ public class MinhaVisaoTest extends BaseTest {
     public void setupVerTarefasPage() {
         minhaVisaoPage = new MinhaVisaoPage(driver);
     }
-
     @Test(description = "Deve gerenciar a tela Minha Visão com sucesso")
     public void deveGerenciarMinhaVisaoComSucesso() {
         criarTarefaPage.abrirTelaCriarTarefa();

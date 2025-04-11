@@ -7,6 +7,7 @@ import pages.VerTarefasPage;
 
 public class VerTarefasTest extends BaseTest {
 
+
     protected VerTarefasPage verTarefasPage;
 
     @BeforeMethod

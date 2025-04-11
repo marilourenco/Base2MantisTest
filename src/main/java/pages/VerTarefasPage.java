@@ -59,5 +59,4 @@ public class VerTarefasPage {
     public void redefinirFiltros() {
         driver.findElement(botaoRedefinir).click();
     }
-
 }

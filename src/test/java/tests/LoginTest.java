@@ -25,5 +25,4 @@ public class LoginTest {
     public void realizarLoginComSucesso() {
         loginPage.realizarLogin("marilene.lourenco", "Marilene1987@");
     }
-
 }
