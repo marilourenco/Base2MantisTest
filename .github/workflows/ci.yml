@@ -26,11 +26,11 @@ jobs:
       - name: Build e executar testes
         run: ./mvnw clean test
 
-      - name: Agregar resultados Allure
-        run: ./mvnw allure:aggregate
-
       - name: Gerar relatório Allure
-        run: ./mvnw site
+        run: ./mvnw allure:report
+
+      - name: Listar arquivos dentro de target
+        run: ls -R target
 
       - name: Publicar relatório como artefato
         uses: actions/upload-artifact@v4
