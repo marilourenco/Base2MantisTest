@@ -2,6 +2,8 @@
 
 Projeto de automação para o site [Mantis Base2](https://mantis-prova.base2.com.br/), utilizando **Java**, **Selenium WebDriver**, **TestNG** **Github Actions** e **Allure** para geração de relatórios de testes.
 
+**Foram exploradas práticas como reuso, testes rodando headless, camadas base e swich, datadriven e page objects.**
+
 ## :rocket: Tech Stack
 
 - **Java** — Linguagem principal
