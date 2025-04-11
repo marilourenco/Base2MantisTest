@@ -1,92 +1,122 @@
-# Base2 Mantis Automation Project
+# Base2 Mantis Test Automation
 
-Este projeto tem como objetivo automatizar fluxos do site [Mantis Prova Base2](https://mantis-prova.base2.com.br) utilizando Selenium WebDriver com Java, TestNG e Allure para geração de relatórios. Foi criado do zero, com boas práticas de automação, como reuso de código, arquitetura em camadas (base/switch), utilização de Page Object Model e testes data-driven.
+Projeto de automação para o site [Mantis Base2](https://mantis-prova.base2.com.br/), utilizando **Java**, **Selenium WebDriver**, **TestNG** e **Allure** para geração de relatórios de testes.
 
----
-
-## 📚 Tech Stack
+## :rocket: Tech Stack
 
 - **Java** — Linguagem principal
 - **Maven** — Gerenciador de dependências e build
-- **Selenium WebDriver** — Framework de automação web
-- **WebDriver Manager** — Gerenciamento automático de drivers (Chrome/Firefox)
-- **TestNG** — Organização de testes (anotações, asserções, execuções paralelas)
-- **Allure Reports** — Geração de relatórios ricos e visuais
-- **Page Object Model (POM)** — Organização do projeto em camadas
-- **Drivers** — ChromeDriver e GeckoDriver
-- **GitHub** — Repositório e CI/CD
+- **Selenium WebDriver** — Core da automação web
+- **WebDriverManager** — Gerenciamento automático de drivers
+- **TestNG** — Organização e execução de testes (anotações, assertions, paralelismo)
+- **Allure Reports** — Geração de relatórios de execução
+- **Page Object Model (POM)** — Separação de camadas (páginas, ações, testes)
+- **ChromeDriver** e **GeckoDriver** — Suporte a Chrome e Firefox
+- **GitHub Actions** — Integração contínua (CI)
 
----
+## :bookmark_tabs: Estrutura do Projeto
 
-## 📂 Estrutura do Projeto
+- **src/main/java**: Classes utilitárias e configurações base
+- **src/test/java**: Casos de testes organizados por páginas
+- **pom.xml**: Configuração de dependências, build e plugins
+- **testng.xml**: Organização dos testes
+- **Allure Config**: Configuração de geração de relatórios no Maven
 
-- `src/main/java/base/` — Classes bases (configurações de driver, basePage)
-- `src/main/java/pages/` — Mapeamento e ações das páginas
-- `src/test/java/tests/` — Casos de teste
-- `src/test/resources/` — Massa de dados, evidências e configurações
-- `pom.xml` — Configurações e dependências do Maven
+## :gear: Configuração e Execução Local
 
----
+Clone o projeto:
 
-## 🏁 Como Executar
+```bash
+git clone https://github.com/seu-usuario/Base2MantisTest.git
+cd Base2MantisTest
+```
 
-### Rodar Testes e Gerar Relatório
+Execute os testes localmente:
+
+```bash
+./mvnw clean test
+```
+
+Gere e visualize o relatório Allure:
+
 ```bash
 mvn clean test io.qameta.allure:allure-maven:report
 ```
 
-### Acessar Relatório
-Após execução:
+Ou acesse manualmente o relatório gerado em:
+
 ```
-.../Base2MantisTest/target/site/allure-maven-plugin/index.html
+target/site/allure-maven-plugin/index.html
 ```
-Basta clicar no arquivo e abrir no navegador de sua preferência.
+
+> Basta abrir o arquivo `index.html` no navegador.
+
+## :bar_chart: Data Driven
+
+Este projeto utiliza o recurso **DataProvider** do TestNG na classe **CriarTarefaTest**para execução de testes com múltiplos dados de entrada.
+
+## :clipboard: Funcionalidades e Cenários
+
+### Tela - Minha Visão
+
+- Verificar tarefas:
+  - Validar Tarefa Criada
+  - Expandir/Comprimir visão
+
+### Tela - Ver Tarefas
+
+- Aplicar filtros
+- Redefinir filtros
+- Exportar tarefas para Excel
+
+### Tela - Criar Tarefa
+
+- Criar tarefa com todos os campos preenchidos
+- Criar tarefa apenas com campos obrigatórios
+- Criar tarefa sem campos obrigatórios (cenário de exceção)
 
 ---
 
-## 🧪 Fluxos de Teste Priorizados
+## :construction_worker: GitHub Actions - CI Pipeline
 
-1. **Criar Tarefa Completa**
-    - Preenche todos os campos, anexa arquivo, marca como pública e valida criação.
+O projeto conta com automação de execução dos testes via GitHub Actions:
 
-2. **Criar Tarefa com Erro**
-    - Deixa campos obrigatórios vazios e valida mensagens de erro.
+| Etapa | O que faz |
+|:---|:---|
+| Checkout | Baixa o código da branch (PR ou push) |
+| Setup Java 11 | Instala Java 11 Temurin |
+| Permissão ao Maven Wrapper | Dá permissão para executar o `mvnw` em Linux |
+| Build e Testes | Executa `./mvnw clean test` |
+| Gerar Allure Report | Gera o relatório Allure com Maven |
+| Upload do Allure | Faz upload da pasta do relatório como artefato |
 
-3. **Minha Visão**
-    - Acessa "Relatados por mim", navega para "Ver tarefas" e valida se a tarefa aparece.
+### :information_source: Após a execução do Workflow:
 
-4. **Ver Tarefas - Filtrar e Redefinir**
-    - Aplica filtros, valida listagem e redefine filtros.
-
-5. **Ver Tarefas - Exportar CSV**
-    - Exporta tarefas para CSV e valida o download.
-
----
-
-## 🔧 Data Driven
-
-Foi utilizado o recurso `@DataProvider` do TestNG na classe `CriarTarefaTest` para parametrizar os testes de forma prática e flexível, melhorando o reuso de código e a cobertura de diferentes cenários.
+- Acesse a aba **Actions** no GitHub.
+- Você verá um botão chamado **Artifacts**.
+- Faça o download do `.zip` do relatório (`allure-report`).
+- Extraia o conteúdo e abra o arquivo `index.html` no navegador para visualizar o relatório completo.
 
 ---
 
-## ⚠️ Desafios Encontrados
+## :warning: Problemas Conhecidos
 
-- Utilização de XPathno projeto (entendo como má prática reconhecida).
-- Após execução dos testes via `mvn clean test`, uma aba do navegador permanece aberta mesmo com sucesso nos testes e modo headless configurado.
+- Uso de **XPath** em alguns localizadores (melhoria futura seria migrar para CSS Selectors mais robustos).
+- Ao rodar `mvn clean test`, ocasionalmente sobra uma aba aberta no navegador (problema de encerramento de sessão).
 
----
+## :bug: Bugs Identificados no Sistema
 
-## 🐞 Bugs Encontrados na Aplicação
-
-- Ao criar automaticamente uma tarefa com upload de arquivo, a aplicação confirma sucesso mesmo quando ocorre falha no upload, a tarefa é criada sem o arquivo.
+- Ao criar tarefas com upload de arquivos, a aplicação informa sucesso, mas a tarefa é criada sem o arquivo.
 
 ---
 
-## 💡 Observações
+## :memo: Observações Finais
 
-- Como o projeto foi desenvolvido individualmente, **não fiz uso de branchs ou pull requests**.
-- O projeto foi focado em **boa estruturação, reuso de código, modularidade e geração de relatórios** para facilitar manutenção e escalabilidade futura.
+- Projeto focado em qualidade de código, reuso e boas práticas.
+- Como trata-se de um desafio individual, o projeto não contém fluxo completo de branches, code review e pull requests.
 
 ---
 
-Feito com 💻 e ☕ por Marilene Lourenço.
+**Feito com :heart: por Marilene Lourenço**
+
+Abril/2025
