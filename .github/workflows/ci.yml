@@ -26,14 +26,14 @@ jobs:
       - name: Build e executar testes
         run: ./mvnw clean test
 
+      - name: Agregar resultados Allure
+        run: ./mvnw allure:aggregate
+
       - name: Gerar relatório Allure
-        run: ./mvnw allure:report
+        run: ./mvnw site
 
       - name: Publicar relatório como artefato
         uses: actions/upload-artifact@v4
         with:
           name: allure-report
-          path: target/allure-report
-
-      - name: Listar arquivos para ver se o relatório foi gerado
-        run: ls -R target/
+          path: target/site/allure-maven-plugin
