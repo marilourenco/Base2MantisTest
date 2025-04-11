@@ -20,10 +20,13 @@ public class MinhaVisaoTest extends BaseTest {
     }
 
     @Test(description = "Deve gerenciar a tela Minha Visão com sucesso")
+    @Severity(SeverityLevel.NORMAL)
+    @Feature("Minha Visão")
+    @Story("Usuário gerencia o dashboard Minha Visão")
+    @Description("Este teste valida que o usuário gerenciar os relatórios na tela, abrindo tarefas, navegando entre páginas.")
     public void deveGerenciarMinhaVisaoComSucesso() {
         criarTarefaPage.abrirTelaCriarTarefa();
         minhaVisaoPage.colapsarNaoAtribuidos();
-        minhaVisaoPage.clicarRelatadosPorMim();
         minhaVisaoPage.clicarVerTarefas();
         minhaVisaoPage.validarTarefaCriadaVisivel();
         assertTrue(minhaVisaoPage.validarTarefaCriadaVisivel(), "A tarefa criada está visível na tela Minha Visão.");

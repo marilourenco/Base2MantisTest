@@ -34,7 +34,11 @@ public class BaseTest {
     @AfterMethod
     public void tearDown() {
         if (driver != null) {
-            driver.quit();
+            try {
+                driver.quit();
+            } catch (Exception e) {
+                System.out.println("Erro ao fechar o navegador: " + e.getMessage());
+            }
         }
     }
 }

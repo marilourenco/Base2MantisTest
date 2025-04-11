@@ -16,7 +16,6 @@ public class MinhaVisaoPage {
 
     private By botaoMinhaVisao = By.xpath("/html/body/div[2]/div[1]/ul/li[1]/a/i");
     private By botaoNaoAtribuidos = By.xpath("//*[@id=\"unassigned\"]/div[1]/div[1]/a/i");
-    private By linkRelatadosPorMim = By.xpath("//*[@id=\"reported\"]/div[1]/h4/a");
     private By linkVerTarefas = By.xpath("//*[@id=\"reported\"]/div[1]/div[2]/div/a");
     private String tarefaCriada = "Criando uma nova tarefa preenchendo todos os campos obrigatórios";
 
@@ -28,12 +27,6 @@ public class MinhaVisaoPage {
     public void colapsarNaoAtribuidos() {
         driver.findElement(botaoMinhaVisao).click();
         driver.findElement(botaoNaoAtribuidos).click();
-    }
-
-    @Step("Clicar no link 'Relatados por mim'")
-    public void clicarRelatadosPorMim() {
-        driver.findElement(linkRelatadosPorMim).click();
-        driver.findElement(botaoMinhaVisao).click();
     }
 
     @Step("Clicar no link 'Ver Tarefas'")
