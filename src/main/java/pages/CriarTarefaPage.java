@@ -1,13 +1,11 @@
 package pages;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import io.qameta.allure.Step;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class CriarTarefaPage {
-
-    private WebDriver driver;
+public class CriarTarefaPage extends BasePage {
 
     private By botaoNovaTarefa = By.xpath("//*[@id=\"sidebar\"]/ul/li[3]/a/span");
     private By campoCategoria = By.id("category_id");
@@ -29,7 +27,6 @@ public class CriarTarefaPage {
     private By informacoesAdicionais = By.xpath("//*[@id=\"additional_info\"]");
     private By aplicarMarcadores = By.xpath("//*[@id=\"tag_select\"]");
     private By selecionarOpcaoMarcador56 = By.xpath("//*[@id=\"tag_select\"]/option[56]");
-    private By arquivoUpload = By.xpath("//*[@id=\"report_bug_form\"]/div/div[2]/div[1]/div/table/tbody/tr[11]/td/div[2]");
     private By checkboxPrivado = By.xpath("//*[@id=\"report_bug_form\"]/div/div[2]/div[1]/div/table/tbody/tr[12]/td/label[2]/span");
 
     private String resumoTarefa = "resumoTarefa";
@@ -37,71 +34,68 @@ public class CriarTarefaPage {
     private String passosTarefa = "Passo 1: Digitar alguma coisa";
     private String informacoesTarefa = "Esta tarefa é relacionada a testes automatizados";
 
-
     public CriarTarefaPage(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
     }
 
     @Step("Abrir tela de criação de tarefa")
     public void abrirTelaCriarTarefa() {
-        driver.findElement(botaoNovaTarefa).click();
+        click(botaoNovaTarefa);
     }
 
     @Step("Preencher campos obrigatórios")
     public void preencherCamposObrigatorios(String resumoTarefa, String descricaoTarefa) {
-        driver.findElement(campoCategoria).click();
-        driver.findElement(selecionarOpcao2).click();
+        click(campoCategoria);
+        click(selecionarOpcao2);
 
-        WebElement campoResumo = driver.findElement(resumo);
-        campoResumo.clear();
-        campoResumo.sendKeys(resumoTarefa);
+        clear(resumo);
+        sendKeys(resumo, resumoTarefa);
 
-        WebElement campoDescricao = driver.findElement(descricao);
-        campoDescricao.clear();
-        campoDescricao.sendKeys(descricaoTarefa);
+        clear(descricao);
+        sendKeys(descricao, descricaoTarefa);
     }
 
     @Step("Preencher todos os campos")
     public void preencherCamposOpcionais() {
-        driver.findElement(campoCategoria).click();
-        driver.findElement(selecionarOpcao2).click();
-        driver.findElement(campoFrequencia).click();
-        driver.findElement(selecionarOpcao3).click();
-        driver.findElement(campoGravidade).click();
-        driver.findElement(selecionarOpcao5).click();
-        driver.findElement(campoPrioridade).click();
-        driver.findElement(selecionarPrioridade4).click();
-        driver.findElement(campoSelecionarPerfil).click();
-        driver.findElement(selecionarPerfil2).click();
-        driver.findElement(resumo).sendKeys(resumoTarefa);
-        driver.findElement(descricao).sendKeys(descricaoTarefa);
-        driver.findElement(passosParaReproduzir).sendKeys(passosTarefa);
-        driver.findElement(informacoesAdicionais).sendKeys(informacoesTarefa);
-        driver.findElement(aplicarMarcadores).click();
-        driver.findElement(selecionarOpcaoMarcador56).click();
-        //WebElement inputArquivo = driver.findElement(arquivoUpload); não implementado pois apesar da aplicação dizer que criou corretamente a tarefa, ela não havia adicionado o arquivo
-        //inputArquivo.sendKeys( "src/main/resources/files/arquivo.txt");
+        click(campoCategoria);
+        click(selecionarOpcao2);
+        click(campoFrequencia);
+        click(selecionarOpcao3);
+        click(campoGravidade);
+        click(selecionarOpcao5);
+        click(campoPrioridade);
+        click(selecionarPrioridade4);
+        click(campoSelecionarPerfil);
+        click(selecionarPerfil2);
 
+        sendKeys(resumo, resumoTarefa);
+        sendKeys(descricao, descricaoTarefa);
+        sendKeys(passosParaReproduzir, passosTarefa);
+        sendKeys(informacoesAdicionais, informacoesTarefa);
+
+        click(aplicarMarcadores);
+        click(selecionarOpcaoMarcador56);
+
+        // Upload de arquivo não implementado
     }
 
     @Step("Marcar tarefa como pública")
     public void marcarPublica() {
-        driver.findElement(checkboxPublica).click();
+        click(checkboxPublica);
     }
 
-    @Step("Marcar tarefa como pública")
+    @Step("Marcar tarefa como privada")
     public void marcarPrivado() {
-        driver.findElement(checkboxPrivado).click();
+        click(checkboxPrivado);
     }
 
     @Step("Submeter tarefa")
     public void criarNovaTarefa() {
-        driver.findElement(botaoCriarNovaTarefa).click();
+        click(botaoCriarNovaTarefa);
     }
 
     @Step("Validar criação da tarefa")
     public boolean validarCriacaoTarefa() {
-        return driver.findElement(mensagemSucesso).isDisplayed();
+        return isDisplayed(mensagemSucesso);
+        }
     }
-
-}
