@@ -33,4 +33,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: allure-report
-          path: /target/allure-report
+          path: target/allure-report
+
+      - name: Listar arquivos para ver se o relatório foi gerado
+        run: ls -R target/
