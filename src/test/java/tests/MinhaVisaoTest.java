@@ -27,7 +27,6 @@ public class MinhaVisaoTest extends BaseTest {
     public void deveGerenciarMinhaVisaoComSucesso() {
         criarTarefaPage.abrirTelaCriarTarefa();
         minhaVisaoPage.colapsarNaoAtribuidos();
-        minhaVisaoPage.clicarVerTarefas();
         minhaVisaoPage.validarTarefaCriadaVisivel();
         assertTrue(minhaVisaoPage.validarTarefaCriadaVisivel(), "A tarefa criada está visível na tela Minha Visão.");
     }

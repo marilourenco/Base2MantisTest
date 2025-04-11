@@ -29,12 +29,6 @@ public class MinhaVisaoPage {
         driver.findElement(botaoNaoAtribuidos).click();
     }
 
-    @Step("Clicar no link 'Ver Tarefas'")
-    public void clicarVerTarefas() {
-        driver.findElement(linkVerTarefas).click();
-        driver.findElement(botaoMinhaVisao).click();
-    }
-
     @Step("Validar se a tarefa criada está visível na listagem")
     public boolean validarTarefaCriadaVisivel() {
         return driver.getPageSource().contains(tarefaCriada);
